@@ -1,0 +1,32 @@
+default_language_version:
+    python: python3.11
+repos:
+    # the hooks configuration should be done in the pyproject manifest whenever possible
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+    -   id: check-yaml              # check if YAML are valid
+    -   id: end-of-file-fixer       # add new line at end of file
+    -   id: trailing-whitespace     # remove whitespace at eol
+    -   id: no-commit-to-branch     # prevent commit to main branch
+        args: ['--branch', 'main']
+    -   id: detect-private-key      # check for private keys
+    -   id: check-added-large-files # prevent commit of files >500kB
+        args: ['--maxkb=500']
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.9
+    hooks:
+    -   id: ruff                    # ruff linter, configured in pyproject
+        types_or: [ python, pyi ]
+    -   id: ruff-format             # ruff formatter, configured in pyproject
+        types_or: [ python, pyi ]
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.15.0
+    hooks:
+    -   id: mypy                    # type checking
+        stages: [manual]
+-   repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+    -   id: nbstripout              # remove output cells from notebooks
+        stages: [pre-push]
