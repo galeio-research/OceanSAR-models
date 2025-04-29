@@ -5,7 +5,7 @@ Galeio specializes in developing custom foundation models for scientific and ind
 ## 🤗 Models on Hugging Face
 
 Our models are available on Hugging Face:
-[https://huggingface.co/Galeio](https://huggingface.co/galeio-research)
+[https://huggingface.co/galeio-research](https://huggingface.co/galeio-research)
 
 ## 🌊 OceanSAR Model Family
 
