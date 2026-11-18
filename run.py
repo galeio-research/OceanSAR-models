@@ -23,13 +23,17 @@ def prepare_model():
     # remove the final fc layer
     resnet50.fc = nn.Identity()
 
+    from torchinfo import summary
+
+    summary(resnet50, input_size=(1, 1, 256, 256), depth=6)
+
     return resnet50
 
 
 def main(path):
     resnet50 = prepare_model()
 
-    state_dict = torch.load(path, weights_only=True)
+    state_dict = torch.load(path, weights_only=True, map_location="cpu")
     resnet50.load_state_dict(state_dict)
 
 
